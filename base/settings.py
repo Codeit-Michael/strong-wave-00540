@@ -53,6 +53,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'base.urls'
@@ -127,6 +128,11 @@ STATIC_URL = '/static/'
 
 # if not DEBUG: 
 STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
+
+"""
+SUGGEST TO FINISH THE APP FIRST BEFORE THE STATICFILES CONFIGURATION IF EVER 
+OUR PLAN ABOUT HEROKU SETTING UP DIDN'T WORK...
+"""
 
 # STATICFILES_DIRS = [
 #     os.path.join(BASE_DIR, 'static/'),
