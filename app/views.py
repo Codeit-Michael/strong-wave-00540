@@ -1,7 +1,7 @@
 from urllib import request
 from django.shortcuts import render, redirect
-from pytube import YouTube
 from django.views.generic import View
+import youtube_dl
 
 # Create your views here.
 class VideoProcessor(View):
@@ -12,25 +12,13 @@ class VideoProcessor(View):
         return render(request,'app/main.html')    
 
     def post(self,request):
-        if request.POST.get('fetch-vid'):
-            self.url = request.POST.get('given_url')
-            video = YouTube(self.url)
-            vidTitle,vidThumbnail = video.title,video.thumbnail_url
-            stream = []
-            for vid in video.streams.filter(progressive=True):
-                stream.append(vid)
-            context = {'vidTitle':vidTitle,'vidThumbnail':vidThumbnail,
-                        'stream':stream,'url':self.url}
-            return render(request,'app/main.html',context)
-        elif request.POST.get('download-vid'):
-            self.url = request.POST.get('given_url')
-            fetched_video = YouTube(self.url)
-            video = fetched_video.streams[int(request.POST.get('download-vid')) - 1]
-            video.download(output_path='DownloadedVideos')
-            return recirect('download-video')
-        return render(request,'app/main.html')
-
-
-def DownloadVideo(request):
-    context = {'vidName': 'How to Deploy a Django App to Heroku The Right Way.3gpp'}
-    return render(request, 'app/downloadPage.html', context)
+        url = request.POST["given_url"]
+        print("Someone just tried to download", url)
+        with youtube_dl.YoutubeDL() as ydl:
+            url = ydl.extract_info(url, download=False)
+            print(url)
+            try:
+                download_link = url["entries"][-1]["formats"][-1]["url"]
+            except:
+                download_link = url["formats"][-1]["url"]
+            return redirect(download_link+"&dl=1")
