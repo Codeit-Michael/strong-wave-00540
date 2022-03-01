@@ -13,7 +13,6 @@ class VideoProcessor(View):
 
     def post(self,request):
         url = request.POST["given_url"]
-        print("Someone just tried to download", url)
         with youtube_dl.YoutubeDL() as ydl:
             url = ydl.extract_info(url, download=False)
             download_link = url["formats"]

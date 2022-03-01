@@ -6,8 +6,21 @@
 	<title>Download</title>
 </head>
 <body>
-	{% for x in vids %}
-		<a href="{{x.url}}">{{x.format_note}}</a><br>
-	{% endfor %}
+	<table style="background-color:black;">
+		<thead>
+			<tr style="background-color:lightgrey;">
+				<td>Resolution/File extension</td>
+				<td>Download Link</td>
+			</tr>
+		</thead>
+		<tbody>
+			{% for x in vids %}
+				<tr style="background-color:white;">
+					<td>{{x.height}}/{{x.ext}}</td>
+					<td><a href="{{x.url}}" target="_blank">Download</a></td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
 </body>
 </html>
