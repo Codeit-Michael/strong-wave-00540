@@ -16,5 +16,8 @@ class VideoProcessor(View):
         print("Someone just tried to download", url)
         with youtube_dl.YoutubeDL() as ydl:
             url = ydl.extract_info(url, download=False)
-            download_link = url["formats"][-1]["url"]
-            return redirect(download_link+"&dl=1")
+            download_link = url["formats"]
+            context = {'vids': download_link}
+            return render(request, 'app/download.html', context)
+
+
