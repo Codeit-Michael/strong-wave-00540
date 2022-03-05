@@ -15,7 +15,6 @@ class VideoProcessor(View):
         url = request.POST["given_url"]
         with youtube_dl.YoutubeDL() as ydl:
             url = ydl.extract_info(url, download=False)
-            print(url['title'])
             download_link = url["formats"]
             context = {'vids': download_link,'title':url['title']}
             return render(request, 'app/download.html', context)
