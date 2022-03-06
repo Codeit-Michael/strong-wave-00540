@@ -1,0 +1,14 @@
+{% extends 'app/index.html' %}
+
+{% block title %}YT-DL{% endblock %}
+
+{% block content %}
+  <h1>Youtube Video Downloader</h1>
+  <p class="bold lead">Download your favorite youtube videos for free!!</p>
+  <form method="post" action="">
+    {% csrf_token %}
+    <input type="label" name="given_url" placeholder="enter url..">
+    <button type="submit" name="fetch-vid" value="fetch-vid" class="btn btn-success">Proceed</button>
+    <br><br>
+  </form>
+{% endblock %}

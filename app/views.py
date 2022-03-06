@@ -9,7 +9,7 @@ class VideoProcessor(View):
         self.url = url
 
     def get(self,request):
-        return render(request,'app/main.html')    
+        return render(request,'app/home.html')
 
     def post(self,request):
         url = request.POST["given_url"]
@@ -20,3 +20,9 @@ class VideoProcessor(View):
             return render(request, 'app/download.html', context)
 
 
+def features(request):
+    return render(request, 'app/features.html')
+
+
+def contact(request):
+    return render(request, 'app/contact.html')
