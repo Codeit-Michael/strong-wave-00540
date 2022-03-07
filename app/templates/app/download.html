@@ -5,7 +5,7 @@
 {% block content %}
   <header class="mb-auto">
     <div>
-      <h3 class="float-md-start mb-0">YT-DL</h3>
+      <h3 class="float-md-start mb-0">YourTube</h3>
       <nav class="nav nav-masthead justify-content-center float-md-end">
         <a class="nav-link active" href="/">Home</a>
         <a class="nav-link" href="{% url 'features' %}">Features</a>
@@ -34,7 +34,7 @@
       <div class="d-flex justify-content-center" style="background-color:#184A45FF;">
         <div class="col-md-4"><h6>{{x.height}}</h6></div>
         <div class="col-md-4"><h6>{{x.ext}}</h6></div>
-        <div class="col-md-4"><a href="{{x.url}}" target="_blank"><h6>Download</h6></a></div><br>
+        <div class="col-md-4"><a href="{{x.url}}" target="_blank" style="color:deepskyblue;"><h6>Download</h6></a></div><br>
       </div>
     {% endfor %}
     <br><br>
