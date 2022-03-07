@@ -3,26 +3,40 @@
 {% block title %}Download Links{% endblock %}
 
 {% block content %}
-  <h1 class="mt-auto">Youtube Video Downloader</h1>
-  <p class="bold lead">Download your favorite youtube videos for free!!</p>
-  <form method="post" action="">
-    {% csrf_token %}
-      <input type="label" class="form" name="given_url" placeholder="enter url..">
-      <button type="submit" name="fetch-vid" value="fetch-vid" class="btn btn-success">Proceed</button>
-    <br><br>
-  </form>
-
-  <h3 class="text-white">{{title}}</h3>  
-  <div class="d-flex justify-content-center" style="background-color:#FC766AFF;">
-      <div class="col"><h4>Quality</h4></div>
-      <div class="col"><h4>File Extension</h4></div>
-      <div class="col"><h4>Download Link</h4></div>
-  </div>
-  {% for x in vids %}
-    <div class="d-flex justify-content-center" style="background-color:#184A45FF;">
-      <div class="col-md-4"><h5>{{x.height}}</h5></div>
-      <div class="col-md-4"><h5>{{x.ext}}</h5></div>
-      <div class="col-md-4"><a href="{{x.url}}" target="_blank"><h5>Download</h5></a></div><br>
+  <header class="mb-auto">
+    <div>
+      <h3 class="float-md-start mb-0">YT-DL</h3>
+      <nav class="nav nav-masthead justify-content-center float-md-end">
+        <a class="nav-link active" href="/">Home</a>
+        <a class="nav-link" href="{% url 'features' %}">Features</a>
+        <a class="nav-link" href="{% url 'contact' %}">Contacts</a>
+      </nav>
     </div>
-  {% endfor %}
+  </header>
+
+  <main class="px-3">
+    <h1 class="mt-auto">Youtube Video Downloader</h1>
+    <p class="bold lead">Download your favorite youtube videos for free!!</p>
+    <form method="post" action="">
+      {% csrf_token %}
+        <input type="label" class="form" name="given_url" placeholder="enter url..">
+        <button type="submit" name="fetch-vid" value="fetch-vid" class="btn btn-success">Proceed</button>
+      <br><br>
+    </form>
+
+    <h3 class="text-white">{{title}}</h3>  
+    <div class="d-flex justify-content-center" style="background-color:#FC766AFF;">
+        <div class="col"><h5>Quality</h5></div>
+        <div class="col"><h5>File Extension</h5></div>
+        <div class="col"><h5>Download Link</h5></div>
+    </div>
+    {% for x in vids %}
+      <div class="d-flex justify-content-center" style="background-color:#184A45FF;">
+        <div class="col-md-4"><h6>{{x.height}}</h6></div>
+        <div class="col-md-4"><h6>{{x.ext}}</h6></div>
+        <div class="col-md-4"><a href="{{x.url}}" target="_blank"><h6>Download</h6></a></div><br>
+      </div>
+    {% endfor %}
+    <br><br>
+  </main>
 {% endblock %}
