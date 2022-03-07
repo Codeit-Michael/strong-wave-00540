@@ -1,0 +1,26 @@
+{% extends 'app/index.html' %}
+
+{% block title %}Contacts{% endblock %}
+
+{% block content %}
+  <header class="mb-auto">
+    <div>
+      <h3 class="float-md-start mb-0">YourTube</h3>
+      <nav class="nav nav-masthead justify-content-center float-md-end">
+        <a class="nav-link" href="/">Home</a>
+        <a class="nav-link" href="{% url 'features' %}">Features</a>
+        <a class="nav-link active" href="{% url 'contact' %}">Contacts</a>
+      </nav>
+    </div>
+  </header>
+
+  <main role="main" class="inner cover">
+    <h2>About the Creator</h2>
+    <p>Hi!! I’m Michael Maranan, the Creator of the <b>YourTube</b>. I create websites like this using the Python Django Framework…<br>
+    Here are some of my Social Media accounts:<br>
+      Twitter: <a href="https://twitter.com/Codeit_Michael" target="_blank" style="color:deepskyblue;">Codeit_Michael</a><br>
+      Github: <a href="https://github.com/Codeit-Michael" target="_blank" style="color:deepskyblue;">Codeit-Michael</a><br>
+    </p>
+    <br><br>
+  </main>
+{% endblock %}
